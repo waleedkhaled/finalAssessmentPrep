@@ -31,4 +31,73 @@
 		sortPalyerBy(arrayOfPlayers, "name");
  */
 
-//writ your code here .....
+//write your code here .....
+function each(coll, func) {
+     if (Array.isArray(coll)) {
+         for (var i = 0; i < coll.length; i++) {
+                func(coll[i], i);
+         }
+     } else {
+         for (var key in coll) {
+                func(coll[key], key);
+         }
+     }
+}
+	function player(name){
+		var info={};
+		info={
+			name:name,
+			addInfo:addInfo,
+			increaseLevel:increaseLevel,
+			isAvailable:isAvailable
+		}
+		return info;
+	}
+	function addInfo(age,position,level,availability){
+	this.age=age;
+	this.position=position;
+	this.level=level;
+	this.availability=availability;
+
+	}
+
+	function increaseLevel(inc){
+		this.level+=inc;
+		return this.level;
+	}
+	function isAvailable(){
+		return this.availability;
+	}
+
+	player1=player("waleed");
+	player2=player("ahmed");
+	player3=player("mohammed");
+	player4=player("hamzah");
+	player1.addInfo(18,"lw",33,true);
+	player2.addInfo(18,"rw",26,true);
+	player3.addInfo(18,"cb",20,true);
+	player4.addInfo(18,"lm",40,true);
+	var arrayOfPlayers=[player1,player2,player3,player4];
+	function decrease(){
+	var dec = arrayOfPlayers.map(function(x){
+	   if(x.level>30){
+	   	x.level--;
+	   }
+	   return x;
+	});
+
+	}
+	function sortPalyerBy (array,key){
+		var arr=[];
+		var newarr=[];
+		each(array,function (x,i){
+		arr.push(x[key]);								
+		})
+		arr.sort();
+		each(arr,function(x,i){
+			if(arrayOfPlayers[i][key]===x){
+			newarr.push(arrayOfPlayers[i])		
+			}
+		})
+		return newarr;
+			}
